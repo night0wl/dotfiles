@@ -14,8 +14,8 @@ Everything is configured and tweaked within `~/.dotfiles`, though.
 Everything's built around topic areas. If you're adding a new area to your
 forked dotfiles — say, "Java" — you can simply add a `java` directory and put
 files in there.
-included int. Anything with an extension of `.symlink` will get 
-symlinked without extension into `$HOME` when you run `rake install`.
+Anything with an extension of `.symlink` will get symlinked without 
+extension into `$HOME` when you run `rake install`.
 
 ## Components
 

@@ -1,6 +1,4 @@
-## install
-
-Run this:
+## Install
 
 ```sh
 git clone https://github.com/markba/dotfiles.git ~/.dotfiles
@@ -11,7 +9,7 @@ script/bootstrap
 This will symlink the appropriate files in `.dotfiles` to your home directory.
 Everything is configured and tweaked within `~/.dotfiles`, though.
 
-## topical
+## Structure 
 
 Everything's built around topic areas. If you're adding a new area to your
 forked dotfiles — say, "Java" — you can simply add a `java` directory and put
@@ -19,7 +17,7 @@ files in there.
 included int. Anything with an extension of `.symlink` will get 
 symlinked without extension into `$HOME` when you run `rake install`.
 
-## components
+## Components
 
 There's a few special files in the hierarchy.
 

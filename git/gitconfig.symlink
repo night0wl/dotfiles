@@ -1,9 +1,8 @@
-
 [hub]
         protocol = https
 [user]
-        name = Mark Barger
-        email = barger.mark@gmail.com 
+        name = Matt Revell
+        email = matthew.revell@lonelyplanet.com 
 [credential]
         helper = osxkeychain
 [alias]

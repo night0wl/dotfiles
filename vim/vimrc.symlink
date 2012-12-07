@@ -1,85 +1,143 @@
+call pathogen#infect('~/.vim/bundle')
+call pathogen#helptags()
+
+" Essentials.
+filetype on
+filetype plugin on
+filetype plugin indent on
+syntax on
+set hidden
+set ruler
+set vb
+set wildmenu
+set wildmode=longest:full
+
+" Misc.
+set autoread
 set noswapfile
+set cmdheight=1
 
-" ----------------------------------------------------------------------------
-"  Text Formatting
-" ----------------------------------------------------------------------------
+" Searching
+set incsearch
+set smartcase
+set ignorecase
+set wildignore=*.o,*.obj,.git,*.pyc,*.png
 
-set autoindent             " automatic indent new lines
-set smartindent            " be smart about it
-inoremap # X<BS>#
-set nowrap                 " do not wrap lines
-set softtabstop=2          " yep, two
-set shiftwidth=2           " ..
-set tabstop=4
-set expandtab              " expand tabs to spaces
-set nosmarttab             " fuck tabs
-set formatoptions+=n       " support for numbered/bullet lists
-"set textwidth=80           " wrap at 80 chars by default
-set virtualedit=block      " allow virtual edit in visual block ..
+" Indenting
+" set autoindent
+set backspace=indent,eol,start
+set expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4
 
-" ----------------------------------------------------------------------------
-"  Remapping
-" ----------------------------------------------------------------------------
+" Wrapping
+set textwidth=80
+set nowrap
 
-" lead with ,
-let mapleader = ","
+" Trim whitespace before save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    :silent! %s/\s\+$//e
+    :silent! %s#\($\n\s*\)\+\%$##
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" exit to normal mode with 'jj'
-inoremap jj <ESC>
+" Filetype settings
+au FileType python     set tw=79
+au FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType html       set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType htmldjango set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType html       set tw=0
+au FileType htmldjango set tw=0
+au FileType git        set tw=72
+au FileType gitcommit  set tw=72
 
+" Cabbrs
+cabbr <expr> %% escape(expand('%:p:h'), ' ')
 
-" reflow paragraph with Q in normal and visual mode
-nnoremap Q gqap
-vnoremap Q gq
-
-" sane movement with wrap turned on
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
-
-" ----------------------------------------------------------------------------
-"  UI
-" ----------------------------------------------------------------------------
-
-set ruler                  " show the cursor position all the time
-set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
-set number                 " line numbers
-set wildmenu               " turn on wild menu
-set wildmode=list:longest,full
-set ch=2                   " command line height
-set backspace=2            " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
-set shortmess=filtIoOA     " shorten messages
-set report=0               " tell us about changes
-set nostartofline          " don't jump to the start of line when scrolling
+" Maps
+nmap <leader>T :NERDTreeToggle<CR>
+nmap <leader>v :e $MYVIMRC<CR>
+nmap <leader>g :e $MYGVIMRC<CR>
+nmap <leader>s :lv /^\(get\\|post\\|put\\|del\)/ %<CR>
+nmap <leader>n :lne<CR>
+nmap <leader>p :lprev<CR>
+nmap <leader>a :e ~/.bash_profile<CR>
+nmap <leader>w :%s/ \\+$//g<CR>
+nmap <leader>h :set invhlsearch<CR>
+nnoremap <leader>. <c-^>
 
 
-" ----------------------------------------------------------------------------
-" Visual Cues
-" ----------------------------------------------------------------------------
+imap <c-l> {<CR>}<ESC>O
+imap <c-s> <ESC>
+nmap <leader>c <Plug>Kwbd
 
-set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
-set incsearch              " do incremental searching
-set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+" Comment formatting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Last and next jump should center too.
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+
+" Indent text object
+onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
+onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
+vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
+vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
 
 
-" ---------------------------------------------------------------------------
-"  Strip all trailing whitespace in file
-" ---------------------------------------------------------------------------
-
-function! StripWhitespace ()
-    exec ':%s/ \+$//gc'
+function! s:IndTxtObj(inner)
+  let curline = line(".")
+  let lastline = line("$")
+  let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
+  let i = i < 0 ? 0 : i
+  if getline(".") !~ "^\\s*$"
+    let p = line(".") - 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p > 0 && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
+      -
+      let p = line(".") - 1
+      let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    normal! 0V
+    call cursor(curline, 0)
+    let p = line(".") + 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p <= lastline && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
+      +
+      let p = line(".") + 1
+      let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    normal! $
+  endif
 endfunction
-map ,s :call StripWhitespace ()<CR>
+
+
+" Function to activate a virtualenv in the embedded interpreter for
+" omnicomplete and other things like that.
+function! LoadVirtualEnv(path)
+    let activate_this = a:path . '/bin/activate_this.py'
+    if getftype(a:path) == "dir" && filereadable(activate_this)
+        python << EOF
+import vim
+activate_this = vim.eval('l:activate_this')
+execfile(activate_this, dict(__file__=activate_this))
+EOF
+    endif
+endfunction
+
+" Load up a 'stable' virtualenv if one exists in ~/.virtualenv
+let defaultvirtualenv = $HOME . "/.virtualenvs/stable"
+
+" Only attempt to load this virtualenv if the defaultvirtualenv
+" actually exists, and we aren't running with a virtualenv active.
+if has("python")
+    if empty($VIRTUAL_ENV) && getftype(defaultvirtualenv) == "dir"
+        call LoadVirtualEnv(defaultvirtualenv)
+    endif
+endif
+
+" Remap some stuff
+inoremap £ #
+inoremap § :

@@ -32,6 +32,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 " Wrapping
 set textwidth=80
 set nowrap
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Trim whitespace before save
 fun! <SID>StripTrailingWhitespaces()

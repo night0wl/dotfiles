@@ -1,6 +1,8 @@
 call pathogen#infect('~/.vim/bundle')
 call pathogen#helptags()
 
+let python_version_2 = 1
+
 " Essentials.
 filetype on
 filetype plugin on
@@ -11,6 +13,7 @@ set ruler
 set vb
 set wildmenu
 set wildmode=longest:full
+set rnu
 
 " Misc.
 set autoread

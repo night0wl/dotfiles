@@ -3,10 +3,8 @@
 ```sh
 git clone git@github.com:night0wl/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-git submodule add -f git://github.com/rodjek/vim-puppet.git ./vim/vim.symlink/bundle/vim-puppet
-git submodule add -f git://github.com/godlygeek/tabular.git ./vim/vim.symlink/bundle/tabular
-git submodule add -f git://github.com/scrooloose/syntastic.git ./vim/vim.symlink/bundle/syntastic
-git submodule add -f git://github.com/hdima/python-syntax.git ./vim/vim.symlink/bundle/python-syntax
+git submodule init
+git submodule update
 script/bootstrap
 ```
 

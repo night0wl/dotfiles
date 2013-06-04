@@ -13,7 +13,11 @@ set ruler
 set vb
 set wildmenu
 set wildmode=longest:full
-set rnu
+if exists("&rnu")
+    set rnu
+else
+    set number
+endif
 
 " Misc.
 set autoread
@@ -35,7 +39,11 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 " Wrapping
 set textwidth=80
 set nowrap
-let &colorcolumn=join(range(81,999),",")
+if exists("&colorcolumn")
+    let &colorcolumn=join(range(81,999),",")
+else
+    :autocmd BufWinEnter * call matchadd('ErrorMsg', '\%>'.&l:textwidth.'v.\+', -1)
+endif
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Trim whitespace before save

@@ -11,6 +11,18 @@ script/bootstrap
 This will symlink the appropriate files in `.dotfiles` to your home directory.
 Everything is configured and tweaked within `~/.dotfiles`, though.
 
+To make the tagbar vim plugin  work you will also need:
+Exuberant Ctags >= 5.5.
+
+On Mac OS X:
+```
+brew install ctags
+```
+On Debian Linux:
+```
+apt-get install exuberant-ctags
+```
+
 ## Structure
 
 Everything's built around topic areas. If you're adding a new area to your

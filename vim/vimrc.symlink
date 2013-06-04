@@ -146,3 +146,5 @@ endif
 " Remap some stuff
 inoremap £ #
 inoremap § :
+map <C-n> :NERDTreeToggle<CR>
+map <C-t> :TagbarToggle<CR>

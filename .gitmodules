@@ -1,6 +1,3 @@
-[submodule "vim/vim.symlink/bundle/Color-Sampler-Pack"]
-    path = vim/vim.symlink/bundle/Color-Sampler-Pack
-    url = git://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "vim/vim.symlink/bundle/nerdtree"]
     path = vim/vim.symlink/bundle/nerdtree
     url = git://github.com/scrooloose/nerdtree.git
@@ -22,3 +19,6 @@
 [submodule "vim/vim.symlink/bundle/python-syntax"]
 	path = vim/vim.symlink/bundle/python-syntax
 	url = git://github.com/hdima/python-syntax.git
+[submodule "vim/vim.symlink/bundle/Colour-Sampler-Pack"]
+	path = vim/vim.symlink/bundle/Colour-Sampler-Pack
+	url = git://github.com/vim-scripts/Colour-Sampler-Pack.git

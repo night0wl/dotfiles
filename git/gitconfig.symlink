@@ -2,7 +2,7 @@
         protocol = https
 [user]
         name = Matt Revell
-        email = matthew.revell@lonelyplanet.com 
+	email = nightowlmatt@gmail.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -27,3 +27,5 @@
         prompt = false
 [help]
         autocorrect = 1
+[push]
+	default = simple

@@ -31,3 +31,6 @@
 [submodule "vim/vim.symlink/bundle/vim-addon-mw-utils"]
 	path = vim/vim.symlink/bundle/vim-addon-mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/vim.symlink/bundle/vim-chef"]
+	path = vim/vim.symlink/bundle/vim-chef
+	url = git://github.com/vadv/vim-chef.git

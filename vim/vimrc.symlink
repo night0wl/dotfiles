@@ -168,3 +168,4 @@ inoremap £ #
 inoremap § :
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
+set pastetoggle=<C-p>

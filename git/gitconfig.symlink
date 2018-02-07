@@ -2,7 +2,7 @@
         protocol = https
 [user]
         name = Matt Revell
-	email = nightowlmatt@gmail.com
+	    email = nightowlmatt@gmail.com
 [credential]
         helper = osxkeychain
 [alias]

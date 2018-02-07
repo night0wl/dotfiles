@@ -17,10 +17,12 @@ Exuberant Ctags >= 5.5.
 On Mac OS X:
 ```
 brew install ctags
+brew install flake8
 ```
 On Debian Linux:
 ```
 apt-get install exuberant-ctags
+apt-get install python-flake8
 ```
 
 ## Structure

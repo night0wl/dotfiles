@@ -51,12 +51,6 @@ au FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2
 " Wrapping
 set textwidth=80
 set nowrap
-if exists("&colorcolumn")
-    let &colorcolumn=join(range(81,999),",")
-else
-    :autocmd BufWinEnter * call matchadd('ErrorMsg', '\%>'.&l:textwidth.'v.\+', -1)
-endif
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Trim whitespace before save
 fun! <SID>StripTrailingWhitespaces()
@@ -77,6 +71,15 @@ au FileType html       set tw=0
 au FileType htmldjango set tw=0
 au FileType git        set tw=72
 au FileType gitcommit  set tw=72
+au FileType terraform  set tw=119
+
+" Render textwidth boundary
+if exists("&colorcolumn")
+    let &colorcolumn=join(range(80,999),",")
+else
+    :autocmd BufWinEnter * call matchadd('ErrorMsg', '\%>'.&l:textwidth.'v.\+', -1)
+endif
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Cabbrs
 cabbr <expr> %% escape(expand('%:p:h'), ' ')
@@ -168,4 +171,5 @@ inoremap £ #
 inoremap § :
 map <C-n> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
+map <C-e> :Tab 1=<CR>
 set pastetoggle=<C-p>

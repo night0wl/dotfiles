@@ -1,42 +1,43 @@
 [submodule "vim/vim.symlink/bundle/nerdtree"]
     path = vim/vim.symlink/bundle/nerdtree
-    url = git://github.com/scrooloose/nerdtree.git
+    url = git@github.com:preservim/nerdtree.git
 [submodule "vim/vim.symlink/bundle/tagbar"]
     path = vim/vim.symlink/bundle/tagbar
-    url = git://github.com/majutsushi/tagbar.git
+    url = git@github.com:majutsushi/tagbar.git
 [submodule "vim/vim.symlink/bundle/vim-ruby"]
     path = vim/vim.symlink/bundle/vim-ruby
-    url = git://github.com/vim-ruby/vim-ruby.git
+    url = git@github.com:vim-ruby/vim-ruby.git
 [submodule "vim/vim.symlink/bundle/vim-puppet"]
 	path = vim/vim.symlink/bundle/vim-puppet
-	url = git://github.com/rodjek/vim-puppet.git
+	url = git@github.com:rodjek/vim-puppet.git
 [submodule "vim/vim.symlink/bundle/tabular"]
 	path = vim/vim.symlink/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
+	url = git@github.com:godlygeek/tabular.git
 [submodule "vim/vim.symlink/bundle/syntastic"]
 	path = vim/vim.symlink/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+	url = git@github.com:scrooloose/syntastic.git
 [submodule "vim/vim.symlink/bundle/python-syntax"]
 	path = vim/vim.symlink/bundle/python-syntax
-	url = git://github.com/hdima/python-syntax.git
+	url = git@github.com:hdima/python-syntax.git
 [submodule "vim/vim.symlink/bundle/Colour-Sampler-Pack"]
 	path = vim/vim.symlink/bundle/Colour-Sampler-Pack
-	url = git://github.com/vim-scripts/Colour-Sampler-Pack.git
+	url = git@github.com:vim-scripts/Colour-Sampler-Pack.git
 [submodule "vim/vim.symlink/bundle/snipmate"]
 	path = vim/vim.symlink/bundle/snipmate
-	url = git://github.com/garbas/vim-snipmate.git
+	url = git@github.com:garbas/vim-snipmate.git
 [submodule "vim/vim.symlink/bundle/tlib_vim"]
 	path = vim/vim.symlink/bundle/tlib_vim
-	url = git://github.com/tomtom/tlib_vim.git
+    url = git@github.com:tomtom/tlib_vim.git
+    ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-addon-mw-utils"]
 	path = vim/vim.symlink/bundle/vim-addon-mw-utils
-	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
 [submodule "vim/vim.symlink/bundle/vim-chef"]
 	path = vim/vim.symlink/bundle/vim-chef
-	url = git://github.com/vadv/vim-chef.git
+	url = git@github.com:vadv/vim-chef.git
 [submodule "vim/vim.symlink/bundle/vim-fugitive"]
 	path = vim/vim.symlink/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = git@github.com:tpope/vim-fugitive.git
 [submodule "vim/vim.symlink/bundle/vim-json"]
 	path = vim/vim.symlink/bundle/vim-json
 	url = git@github.com:elzr/vim-json.git

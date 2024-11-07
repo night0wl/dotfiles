@@ -75,7 +75,7 @@ au FileType terraform  set tw=119
 
 " Render textwidth boundary
 if exists("&colorcolumn")
-    let &colorcolumn=join(range(80,999),",")
+    let &colorcolumn=join(range(120,999),",")
 else
     :autocmd BufWinEnter * call matchadd('ErrorMsg', '\%>'.&l:textwidth.'v.\+', -1)
 endif
